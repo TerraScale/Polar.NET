@@ -89,12 +89,12 @@ public class CustomerSeatsApi
     /// <param name="request">The seat assignment request.</param>
     /// <param name="cancellationToken">Cancellation token.</param>
     /// <returns>A task that represents the operation.</returns>
-    public async Task AssignAsync(
-        SeatAssignRequest request,
+public async Task AssignAsync(
+        CustomerSeatAssignRequest request,
         CancellationToken cancellationToken = default)
     {
         var response = await ExecuteWithPoliciesAsync(
-            () => _httpClient.PostAsJsonAsync("customer_seats/assign", request, _jsonOptions, cancellationToken),
+            () => _httpClient.PostAsJsonAsync("v1/customer_seats/assign", request, _jsonOptions, cancellationToken),
             cancellationToken);
 
         await response.HandleErrorsAsync(_jsonOptions, cancellationToken);
@@ -111,7 +111,7 @@ public class CustomerSeatsApi
         CancellationToken cancellationToken = default)
     {
         var response = await ExecuteWithPoliciesAsync(
-            () => _httpClient.PostAsJsonAsync("customer_seats/revoke", request, _jsonOptions, cancellationToken),
+            () => _httpClient.PostAsJsonAsync("v1/customer_seats/revoke", request, _jsonOptions, cancellationToken),
             cancellationToken);
 
         await response.HandleErrorsAsync(_jsonOptions, cancellationToken);
@@ -128,7 +128,7 @@ public class CustomerSeatsApi
         CancellationToken cancellationToken = default)
     {
         var response = await ExecuteWithPoliciesAsync(
-            () => _httpClient.PostAsJsonAsync("customer_seats/resend_invitation", request, _jsonOptions, cancellationToken),
+            () => _httpClient.PostAsJsonAsync("v1/customer_seats/resend_invitation", request, _jsonOptions, cancellationToken),
             cancellationToken);
 
         await response.HandleErrorsAsync(_jsonOptions, cancellationToken);
@@ -142,7 +142,7 @@ public class CustomerSeatsApi
     public async Task<SeatClaimInfo> GetClaimInfoAsync(CancellationToken cancellationToken = default)
     {
         var response = await ExecuteWithPoliciesAsync(
-            () => _httpClient.GetAsync("customer_seats/claim_info", cancellationToken),
+            () => _httpClient.GetAsync("v1/customer_seats/claim_info", cancellationToken),
             cancellationToken);
 
         await response.HandleErrorsAsync(_jsonOptions, cancellationToken);
@@ -163,7 +163,7 @@ public class CustomerSeatsApi
         CancellationToken cancellationToken = default)
     {
         var response = await ExecuteWithPoliciesAsync(
-            () => _httpClient.PostAsJsonAsync("customer_seats/claim", request, _jsonOptions, cancellationToken),
+            () => _httpClient.PostAsJsonAsync("v1/customer_seats/claim", request, _jsonOptions, cancellationToken),
             cancellationToken);
 
         await response.HandleErrorsAsync(_jsonOptions, cancellationToken);

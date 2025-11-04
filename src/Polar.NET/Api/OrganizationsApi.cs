@@ -94,7 +94,7 @@ public class OrganizationsApi
         CancellationToken cancellationToken = default)
     {
         var response = await ExecuteWithPoliciesAsync(
-            () => _httpClient.PostAsJsonAsync("organizations", request, _jsonOptions, cancellationToken),
+            () => _httpClient.PostAsJsonAsync("v1/organizations", request, _jsonOptions, cancellationToken),
             cancellationToken);
 
         await response.HandleErrorsAsync(_jsonOptions, cancellationToken);

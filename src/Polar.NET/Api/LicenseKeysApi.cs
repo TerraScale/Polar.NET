@@ -289,7 +289,7 @@ public class LicenseKeysApi
         }
 
         var response = await ExecuteWithPoliciesAsync(
-            () => _httpClient.GetAsync($"license_keys?{GetQueryString(queryParams)}", cancellationToken),
+            () => _httpClient.GetAsync($"v1/license_keys/?{GetQueryString(queryParams)}", cancellationToken),
             cancellationToken);
 
         await response.HandleErrorsAsync(_jsonOptions, cancellationToken);

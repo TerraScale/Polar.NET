@@ -68,12 +68,12 @@ public class SeatsApi
     /// <param name="request">The seat assignment request.</param>
     /// <param name="cancellationToken">Cancellation token.</param>
     /// <returns>A task that represents the operation.</returns>
-    public async Task AssignAsync(
-        SeatAssignRequest request,
+public async Task AssignAsync(
+        SubscriptionSeatAssignRequest request,
         CancellationToken cancellationToken = default)
     {
         var response = await ExecuteWithPoliciesAsync(
-            () => _httpClient.PostAsJsonAsync("seats/assign", request, _jsonOptions, cancellationToken),
+            () => _httpClient.PostAsJsonAsync("v1/seats/assign", request, _jsonOptions, cancellationToken),
             cancellationToken);
 
         await response.HandleErrorsAsync(_jsonOptions, cancellationToken);
@@ -90,7 +90,7 @@ public class SeatsApi
         CancellationToken cancellationToken = default)
     {
         var response = await ExecuteWithPoliciesAsync(
-            () => _httpClient.PostAsJsonAsync("seats/revoke", request, _jsonOptions, cancellationToken),
+            () => _httpClient.PostAsJsonAsync("v1/seats/revoke", request, _jsonOptions, cancellationToken),
             cancellationToken);
 
         await response.HandleErrorsAsync(_jsonOptions, cancellationToken);
@@ -107,7 +107,7 @@ public class SeatsApi
         CancellationToken cancellationToken = default)
     {
         var response = await ExecuteWithPoliciesAsync(
-            () => _httpClient.PostAsJsonAsync("seats/resend_invitation", request, _jsonOptions, cancellationToken),
+            () => _httpClient.PostAsJsonAsync("v1/seats/resend_invitation", request, _jsonOptions, cancellationToken),
             cancellationToken);
 
         await response.HandleErrorsAsync(_jsonOptions, cancellationToken);
@@ -121,7 +121,7 @@ public class SeatsApi
     public async Task<List<ClaimedSubscription>> ListClaimedSubscriptionsAsync(CancellationToken cancellationToken = default)
     {
         var response = await ExecuteWithPoliciesAsync(
-            () => _httpClient.GetAsync("seats/claimed_subscriptions", cancellationToken),
+            () => _httpClient.GetAsync("v1/seats/claimed_subscriptions", cancellationToken),
             cancellationToken);
 
         await response.HandleErrorsAsync(_jsonOptions, cancellationToken);

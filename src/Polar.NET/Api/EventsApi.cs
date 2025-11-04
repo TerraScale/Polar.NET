@@ -70,7 +70,7 @@ public class EventsApi
     public async Task<List<EventName>> ListNamesAsync(CancellationToken cancellationToken = default)
     {
         var response = await ExecuteWithPoliciesAsync(
-            () => _httpClient.GetAsync("events/names", cancellationToken),
+            () => _httpClient.GetAsync("v1/events/names", cancellationToken),
             cancellationToken);
 
         await response.HandleErrorsAsync(_jsonOptions, cancellationToken);
@@ -112,7 +112,7 @@ public class EventsApi
         CancellationToken cancellationToken = default)
     {
         var response = await ExecuteWithPoliciesAsync(
-            () => _httpClient.PostAsJsonAsync("events/ingest", request, _jsonOptions, cancellationToken),
+            () => _httpClient.PostAsJsonAsync("v1/events/ingest", request, _jsonOptions, cancellationToken),
             cancellationToken);
 
         await response.HandleErrorsAsync(_jsonOptions, cancellationToken);

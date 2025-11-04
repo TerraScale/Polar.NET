@@ -210,7 +210,7 @@ public enum SeatStatus
 /// <summary>
 /// Request to assign a seat.
 /// </summary>
-public record SeatAssignRequest
+public record SubscriptionSeatAssignRequest
 {
     /// <summary>
     /// The subscription ID.

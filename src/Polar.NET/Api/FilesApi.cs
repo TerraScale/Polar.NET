@@ -95,7 +95,7 @@ public class FilesApi
         CancellationToken cancellationToken = default)
     {
         var response = await ExecuteWithPoliciesAsync(
-            () => _httpClient.PostAsJsonAsync("files", request, _jsonOptions, cancellationToken),
+            () => _httpClient.PostAsJsonAsync("v1/files", request, _jsonOptions, cancellationToken),
             cancellationToken);
 
         await response.HandleErrorsAsync(_jsonOptions, cancellationToken);
@@ -153,14 +153,16 @@ public class FilesApi
     /// Marks a file upload as completed.
     /// </summary>
     /// <param name="fileId">The file ID.</param>
+    /// <param name="request">The upload completion request.</param>
     /// <param name="cancellationToken">Cancellation token.</param>
     /// <returns>The updated file.</returns>
     public async Task<File> CompleteUploadAsync(
         string fileId,
+        FileUploadCompleteRequest request,
         CancellationToken cancellationToken = default)
     {
         var response = await ExecuteWithPoliciesAsync(
-            () => _httpClient.PostAsync($"v1/files/uploaded", null, cancellationToken),
+            () => _httpClient.PostAsJsonAsync($"v1/files/{fileId}/uploaded", request, _jsonOptions, cancellationToken),
             cancellationToken);
 
         await response.HandleErrorsAsync(_jsonOptions, cancellationToken);

@@ -19,7 +19,6 @@ namespace Polar.NET.Api;
 /// </summary>
 public class ProductsApi
 {
-    private const string ApiVersion = "v1";
     private readonly HttpClient _httpClient;
     private readonly JsonSerializerOptions _jsonOptions;
     private readonly AsyncRetryPolicy<HttpResponseMessage> _retryPolicy;
@@ -56,7 +55,7 @@ public class ProductsApi
         };
 
         var response = await ExecuteWithPoliciesAsync(
-            () => _httpClient.GetAsync($"products?{GetQueryString(queryParams)}", cancellationToken),
+            () => _httpClient.GetAsync($"v1/products/?{GetQueryString(queryParams)}", cancellationToken),
             cancellationToken);
 
         await response.HandleErrorsAsync(_jsonOptions, cancellationToken);
@@ -99,7 +98,7 @@ public class ProductsApi
         }
 
         var response = await ExecuteWithPoliciesAsync(
-            () => _httpClient.GetAsync($"products?{GetQueryString(queryParams)}", cancellationToken),
+            () => _httpClient.GetAsync($"v1/products/?{GetQueryString(queryParams)}", cancellationToken),
             cancellationToken);
 
         await response.HandleErrorsAsync(_jsonOptions, cancellationToken);
@@ -120,7 +119,7 @@ public class ProductsApi
         CancellationToken cancellationToken = default)
     {
         var response = await ExecuteWithPoliciesAsync(
-            () => _httpClient.GetAsync($"products?{GetQueryString(queryParams)}", cancellationToken),
+            () => _httpClient.GetAsync($"v1/products/{productId}/", cancellationToken),
             cancellationToken);
 
         await response.HandleErrorsAsync(_jsonOptions, cancellationToken);
@@ -141,7 +140,7 @@ public class ProductsApi
         CancellationToken cancellationToken = default)
     {
         var response = await ExecuteWithPoliciesAsync(
-            () => _httpClient.PostAsJsonAsync("products", request, _jsonOptions, cancellationToken),
+            () => _httpClient.PostAsJsonAsync("v1/products/", request, _jsonOptions, cancellationToken),
             cancellationToken);
 
         await response.HandleErrorsAsync(_jsonOptions, cancellationToken);
@@ -164,7 +163,7 @@ public class ProductsApi
         CancellationToken cancellationToken = default)
     {
         var response = await ExecuteWithPoliciesAsync(
-            () => _httpClient.PatchAsJsonAsync($"products/{productId}", request, _jsonOptions, cancellationToken),
+            () => _httpClient.PatchAsJsonAsync($"v1/products/{productId}/", request, _jsonOptions, cancellationToken),
             cancellationToken);
 
         await response.HandleErrorsAsync(_jsonOptions, cancellationToken);
@@ -185,7 +184,7 @@ public class ProductsApi
         CancellationToken cancellationToken = default)
     {
         var response = await ExecuteWithPoliciesAsync(
-            () => _httpClient.DeleteAsync($"products/{productId}", cancellationToken),
+            () => _httpClient.DeleteAsync($"v1/products/{productId}/", cancellationToken),
             cancellationToken);
 
         await response.HandleErrorsAsync(_jsonOptions, cancellationToken);
@@ -208,7 +207,7 @@ public class ProductsApi
         CancellationToken cancellationToken = default)
     {
         var response = await ExecuteWithPoliciesAsync(
-            () => _httpClient.PostAsJsonAsync($"products/{productId}/prices", request, _jsonOptions, cancellationToken),
+            () => _httpClient.PostAsJsonAsync($"v1/products/{productId}/prices/", request, _jsonOptions, cancellationToken),
             cancellationToken);
 
         await response.HandleErrorsAsync(_jsonOptions, cancellationToken);
@@ -292,7 +291,7 @@ public class ProductsApi
         };
 
         var response = await ExecuteWithPoliciesAsync(
-            () => _httpClient.GetAsync($"products/export?{GetQueryString(queryParams)}", cancellationToken),
+            () => _httpClient.GetAsync($"v1/products/export/?{GetQueryString(queryParams)}", cancellationToken),
             cancellationToken);
 
         await response.HandleErrorsAsync(_jsonOptions, cancellationToken);
@@ -320,7 +319,7 @@ public class ProductsApi
         };
 
         var response = await ExecuteWithPoliciesAsync(
-            () => _httpClient.GetAsync($"products/{productId}/prices/export?{GetQueryString(queryParams)}", cancellationToken),
+            () => _httpClient.GetAsync($"v1/products/{productId}/prices/export/?{GetQueryString(queryParams)}", cancellationToken),
             cancellationToken);
 
         await response.HandleErrorsAsync(_jsonOptions, cancellationToken);

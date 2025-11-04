@@ -73,7 +73,7 @@ public class MetersApi
         CancellationToken cancellationToken = default)
     {
         var response = await ExecuteWithPoliciesAsync(
-            () => _httpClient.PostAsJsonAsync("meters", request, _jsonOptions, cancellationToken),
+            () => _httpClient.PostAsJsonAsync("v1/meters", request, _jsonOptions, cancellationToken),
             cancellationToken);
 
         await response.HandleErrorsAsync(_jsonOptions, cancellationToken);

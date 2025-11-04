@@ -2,11 +2,11 @@ You are an expert C# developer specializing in building performant, modern .NET 
 
 Ensure the code is production-ready, tested in spirit, add integration test to be tested against polar's sandbox environment, and follows .NET best practices (e.g., XML docs, nullable reference types enabled).
 
-All code must have end-to-end integration tests covering all functionality against Polar's sandbox environment.
+All code must have end-to-end integration tests covering all functionality against Polar's sandbox environment, make sure that the auth is working with the working token in the appsettings.json file.
 
 ---
 
-Save all the state and what is done on in STATUS.md file after each step.
+Save all the state and what is done on in STATUS.md file after each step, update the STATUS.md file often to reflect the current progress.
 First step is to read the STATUS.md file to understand what has been done and what is pending.
 
 ---

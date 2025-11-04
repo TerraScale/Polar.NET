@@ -94,7 +94,7 @@ public class DiscountsApi
         CancellationToken cancellationToken = default)
     {
         var response = await ExecuteWithPoliciesAsync(
-            () => _httpClient.PostAsJsonAsync("discounts", request, _jsonOptions, cancellationToken),
+            () => _httpClient.PostAsJsonAsync("v1/discounts", request, _jsonOptions, cancellationToken),
             cancellationToken);
 
         await response.HandleErrorsAsync(_jsonOptions, cancellationToken);

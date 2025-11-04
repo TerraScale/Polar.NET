@@ -73,7 +73,7 @@ public class CustomFieldsApi
         CancellationToken cancellationToken = default)
     {
         var response = await ExecuteWithPoliciesAsync(
-            () => _httpClient.PostAsJsonAsync("custom_fields", request, _jsonOptions, cancellationToken),
+            () => _httpClient.PostAsJsonAsync("v1/custom_fields", request, _jsonOptions, cancellationToken),
             cancellationToken);
 
         await response.HandleErrorsAsync(_jsonOptions, cancellationToken);
