@@ -291,7 +291,7 @@ public class WebhooksApi
         }
 
         var response = await ExecuteWithPoliciesAsync(
-            () => _httpClient.GetAsync($"v1/webhooks?{GetQueryString(queryParams)}", cancellationToken),
+            () => _httpClient.GetAsync($"v1/webhooks/endpoints?{GetQueryString(queryParams)}", cancellationToken),
             cancellationToken);
 
         await response.HandleErrorsAsync(_jsonOptions, cancellationToken);

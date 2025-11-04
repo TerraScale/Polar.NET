@@ -282,41 +282,7 @@ public class SubscriptionsApi
     }
 }
 
-/// <summary>
-/// Request to export subscriptions.
-/// </summary>
-public record SubscriptionExportRequest
-{
-    /// <summary>
-    /// The format of the export.
-    /// </summary>
-    public ExportFormat Format { get; init; } = ExportFormat.Csv;
 
-    /// <summary>
-    /// Filter by customer ID.
-    /// </summary>
-    public string? CustomerId { get; init; }
-
-    /// <summary>
-    /// Filter by product ID.
-    /// </summary>
-    public string? ProductId { get; init; }
-
-    /// <summary>
-    /// Filter by subscription status.
-    /// </summary>
-    public SubscriptionStatus? Status { get; init; }
-
-    /// <summary>
-    /// Filter by start date.
-    /// </summary>
-    public DateTime? StartDate { get; init; }
-
-    /// <summary>
-    /// Filter by end date.
-    /// </summary>
-    public DateTime? EndDate { get; init; }
-}
 
 /// <summary>
 /// Response for subscription export.
