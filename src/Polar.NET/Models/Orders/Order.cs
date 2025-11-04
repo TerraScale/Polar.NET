@@ -115,31 +115,31 @@ public record Order
     /// The customer information.
     /// </summary>
     [JsonPropertyName("customer")]
-    public Models.Customers.Customer? Customer { get; init; }
+    public Customers.Customer? Customer { get; init; }
 
     /// <summary>
     /// The product information.
     /// </summary>
     [JsonPropertyName("product")]
-    public Models.Products.Product? Product { get; init; }
+    public Products.Product? Product { get; init; }
 
     /// <summary>
     /// The product price information.
     /// </summary>
     [JsonPropertyName("product_price")]
-    public Models.Products.ProductPrice? ProductPrice { get; init; }
+    public Products.ProductPrice? ProductPrice { get; init; }
 
     /// <summary>
     /// The discount information.
     /// </summary>
     [JsonPropertyName("discount")]
-    public Models.Discounts.Discount? Discount { get; init; }
+    public Discounts.Discount? Discount { get; init; }
 
     /// <summary>
     /// The payment information.
     /// </summary>
     [JsonPropertyName("payment")]
-    public Models.Payments.Payment? Payment { get; init; }
+    public Payments.Payment? Payment { get; init; }
 }
 
 /// <summary>

@@ -115,7 +115,7 @@ public record Payment
     /// The refund information.
     /// </summary>
     [JsonPropertyName("refunds")]
-    public List<Models.Refunds.Refund>? Refunds { get; init; }
+    public List<Refunds.Refund>? Refunds { get; init; }
 }
 
 /// <summary>

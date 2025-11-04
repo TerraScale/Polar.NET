@@ -183,7 +183,7 @@ public class PolarClientIntegrationTests : IClassFixture<IntegrationTestFixture>
         var client = _fixture.CreateClient();
 
         // Act
-        var orders = new List<Polar.NET.Models.Orders.Order>();
+        var orders = new List<Models.Orders.Order>();
         await foreach (var order in client.Orders.ListAllAsync())
         {
             orders.Add(order);
@@ -217,7 +217,7 @@ public class PolarClientIntegrationTests : IClassFixture<IntegrationTestFixture>
         var client = _fixture.CreateClient();
 
         // Act
-        var subscriptions = new List<Polar.NET.Models.Subscriptions.Subscription>();
+        var subscriptions = new List<Models.Subscriptions.Subscription>();
         await foreach (var subscription in client.Subscriptions.ListAllAsync())
         {
             subscriptions.Add(subscription);
@@ -267,13 +267,13 @@ public class PolarClientIntegrationTests : IClassFixture<IntegrationTestFixture>
                 Name = $"Test Product {Guid.NewGuid()}",
                 Description = "Integration test product for checkout",
                 Type = ProductType.OneTime,
-                Prices = new List<Polar.NET.Models.Products.ProductPriceCreateRequest> { priceRequest }
+                Prices = new List<ProductPriceCreateRequest> { priceRequest }
             };
 
             var product = await client.Products.CreateAsync(productRequest);
             var price = product.Prices.First();
 
-            var checkoutRequest = new Polar.NET.Models.Checkouts.CheckoutCreateRequest
+            var checkoutRequest = new Models.Checkouts.CheckoutCreateRequest
             {
                 ProductId = product.Id,
                 ProductPriceId = price.Id,
@@ -290,7 +290,7 @@ public class PolarClientIntegrationTests : IClassFixture<IntegrationTestFixture>
             checkout.Should().NotBeNull();
             checkout.Id.Should().NotBeNullOrEmpty();
         }
-        catch (Polar.NET.Exceptions.PolarApiException ex) when (ex.Message.Contains("Unauthorized") || ex.Message.Contains("Forbidden") || ex.Message.Contains("RequestValidationError"))
+        catch (Exceptions.PolarApiException ex) when (ex.Message.Contains("Unauthorized") || ex.Message.Contains("Forbidden") || ex.Message.Contains("RequestValidationError"))
         {
             // Expected in sandbox environment with limited permissions or validation requirements
             true.Should().BeTrue(); // Test passes - this is expected behavior
@@ -319,11 +319,11 @@ public class PolarClientIntegrationTests : IClassFixture<IntegrationTestFixture>
     {
         // Arrange
         var client = _fixture.CreateClient();
-        var createRequest = new Polar.NET.Models.Benefits.BenefitCreateRequest
+        var createRequest = new Models.Benefits.BenefitCreateRequest
         {
             Name = $"Test Benefit {Guid.NewGuid()}",
             Description = "Integration test benefit",
-            Type = Polar.NET.Models.Benefits.BenefitType.Custom,
+            Type = Models.Benefits.BenefitType.Custom,
             Selectable = true
         };
 
@@ -349,7 +349,7 @@ public class PolarClientIntegrationTests : IClassFixture<IntegrationTestFixture>
             // Cleanup
             await client.Benefits.DeleteAsync(createdBenefit.Id);
         }
-        catch (Polar.NET.Exceptions.PolarApiException ex) when (ex.Message.Contains("Unauthorized") || ex.Message.Contains("Forbidden") || ex.Message.Contains("RequestValidationError"))
+        catch (Exceptions.PolarApiException ex) when (ex.Message.Contains("Unauthorized") || ex.Message.Contains("Forbidden") || ex.Message.Contains("RequestValidationError"))
         {
             // Expected in sandbox environment with limited permissions or validation requirements
             true.Should().BeTrue(); // Test passes - this is expected behavior
@@ -378,7 +378,7 @@ public class PolarClientIntegrationTests : IClassFixture<IntegrationTestFixture>
     {
         // Arrange
         var client = _fixture.CreateClient();
-        var createRequest = new Polar.NET.Models.Customers.CustomerCreateRequest
+        var createRequest = new Models.Customers.CustomerCreateRequest
         {
             Email = $"test-{Guid.NewGuid()}@testmail.com",
             Name = "Test Customer",
@@ -417,7 +417,7 @@ public class PolarClientIntegrationTests : IClassFixture<IntegrationTestFixture>
         try
         {
             // First, we need a customer to create a session for
-            var customerRequest = new Polar.NET.Models.Customers.CustomerCreateRequest
+            var customerRequest = new Models.Customers.CustomerCreateRequest
             {
                 Email = $"test-{Guid.NewGuid()}@testmail.com",
                 Name = "Test Customer for Session"
@@ -425,7 +425,7 @@ public class PolarClientIntegrationTests : IClassFixture<IntegrationTestFixture>
 
             var customer = await client.Customers.CreateAsync(customerRequest);
 
-            var sessionRequest = new Polar.NET.Models.CustomerSessions.CustomerSessionCreateRequest
+            var sessionRequest = new Models.CustomerSessions.CustomerSessionCreateRequest
             {
                 CustomerId = customer.Id
             };
@@ -441,7 +441,7 @@ public class PolarClientIntegrationTests : IClassFixture<IntegrationTestFixture>
             // Cleanup
             await client.Customers.DeleteAsync(customer.Id);
         }
-        catch (Polar.NET.Exceptions.PolarApiException ex) when (ex.Message.Contains("Unauthorized") || ex.Message.Contains("Forbidden") || ex.Message.Contains("RequestValidationError"))
+        catch (Exceptions.PolarApiException ex) when (ex.Message.Contains("Unauthorized") || ex.Message.Contains("Forbidden") || ex.Message.Contains("RequestValidationError"))
         {
             // Expected in sandbox environment with limited permissions or validation requirements
             true.Should().BeTrue(); // Test passes - this is expected behavior
@@ -473,7 +473,7 @@ public class PolarClientIntegrationTests : IClassFixture<IntegrationTestFixture>
         var customerAccessToken = "test_customer_token";
         
         // Act & Assert
-        var action = () => Polar.NET.Api.CustomerPortalApi.Create(customerAccessToken);
+        var action = () => Api.CustomerPortalApi.Create(customerAccessToken);
         action.Should().NotThrow();
     }
 
@@ -486,12 +486,12 @@ public class PolarClientIntegrationTests : IClassFixture<IntegrationTestFixture>
         // Act
         var productionClient = PolarClient.Create()
             .WithToken(accessToken)
-            .WithEnvironment(Polar.NET.Models.Common.PolarEnvironment.Production)
+            .WithEnvironment(Models.Common.PolarEnvironment.Production)
             .Build();
 
         var sandboxClient = PolarClient.Create()
             .WithToken(accessToken)
-            .WithEnvironment(Polar.NET.Models.Common.PolarEnvironment.Sandbox)
+            .WithEnvironment(Models.Common.PolarEnvironment.Sandbox)
             .Build();
 
         // Assert

@@ -65,5 +65,5 @@ public record CustomerMeter
     /// The customer information.
     /// </summary>
     [JsonPropertyName("customer")]
-    public Models.Customers.Customer? Customer { get; init; }
+    public Customers.Customer? Customer { get; init; }
 }

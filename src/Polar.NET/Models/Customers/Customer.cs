@@ -87,12 +87,12 @@ public record Customer
     /// <summary>
     /// The customer's subscriptions.
     /// </summary>
-    public List<Models.Subscriptions.Subscription>? Subscriptions { get; init; }
+    public List<Subscriptions.Subscription>? Subscriptions { get; init; }
 
     /// <summary>
     /// The customer's orders.
     /// </summary>
-    public List<Models.Orders.Order>? Orders { get; init; }
+    public List<Orders.Order>? Orders { get; init; }
 }
 
 /// <summary>

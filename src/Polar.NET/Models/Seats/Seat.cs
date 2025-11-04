@@ -84,13 +84,13 @@ public record Seat
     /// The subscription information.
     /// </summary>
     [JsonPropertyName("subscription")]
-    public Models.Subscriptions.Subscription? Subscription { get; init; }
+    public Subscriptions.Subscription? Subscription { get; init; }
 
     /// <summary>
     /// The customer information.
     /// </summary>
     [JsonPropertyName("customer")]
-    public Models.Customers.Customer? Customer { get; init; }
+    public Customers.Customer? Customer { get; init; }
 }
 
 /// <summary>
@@ -174,13 +174,13 @@ public record CustomerSeat
     /// The customer information.
     /// </summary>
     [JsonPropertyName("customer")]
-    public Models.Customers.Customer? Customer { get; init; }
+    public Customers.Customer? Customer { get; init; }
 
     /// <summary>
     /// The subscription information.
     /// </summary>
     [JsonPropertyName("subscription")]
-    public Models.Subscriptions.Subscription? Subscription { get; init; }
+    public Subscriptions.Subscription? Subscription { get; init; }
 }
 
 /// <summary>

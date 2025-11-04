@@ -119,7 +119,7 @@ public class ProductsIntegrationTests : IClassFixture<IntegrationTestFixture>
             exportResult.Should().NotBeNull();
             exportResult.ExportUrl.Should().NotBeNullOrEmpty();
         }
-        catch (Polar.NET.Exceptions.PolarApiException ex) when (ex.Message.Contains("Unauthorized") || ex.Message.Contains("Forbidden") || ex.Message.Contains("RequestValidationError"))
+        catch (Exceptions.PolarApiException ex) when (ex.Message.Contains("Unauthorized") || ex.Message.Contains("Forbidden") || ex.Message.Contains("RequestValidationError"))
         {
             // Expected in sandbox environment with limited permissions or validation requirements
             true.Should().BeTrue(); // Test passes - this is expected behavior
@@ -143,7 +143,7 @@ public class ProductsIntegrationTests : IClassFixture<IntegrationTestFixture>
             exportResult.Should().NotBeNull();
             exportResult.ExportUrl.Should().NotBeNullOrEmpty();
         }
-        catch (Polar.NET.Exceptions.PolarApiException ex) when (ex.Message.Contains("Unauthorized") || ex.Message.Contains("Forbidden") || ex.Message.Contains("Not Found") || ex.Message.Contains("RequestValidationError"))
+        catch (Exceptions.PolarApiException ex) when (ex.Message.Contains("Unauthorized") || ex.Message.Contains("Forbidden") || ex.Message.Contains("Not Found") || ex.Message.Contains("RequestValidationError"))
         {
             // Expected in sandbox environment with limited permissions or when using fake product ID
             true.Should().BeTrue(); // Test passes - this is expected behavior

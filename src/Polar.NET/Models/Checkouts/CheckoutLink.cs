@@ -70,10 +70,10 @@ public record CheckoutLink
     /// <summary>
     /// The product information.
     /// </summary>
-    public Models.Products.Product? Product { get; init; }
+    public Products.Product? Product { get; init; }
 
     /// <summary>
     /// The product price information.
     /// </summary>
-    public Models.Products.ProductPrice? ProductPrice { get; init; }
+    public Products.ProductPrice? ProductPrice { get; init; }
 }

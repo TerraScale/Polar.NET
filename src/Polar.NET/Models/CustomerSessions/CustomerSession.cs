@@ -51,7 +51,7 @@ public record CustomerSession
     /// <summary>
     /// The customer information.
     /// </summary>
-    public Models.Customers.Customer? Customer { get; init; }
+    public Customers.Customer? Customer { get; init; }
 }
 
 /// <summary>
@@ -102,5 +102,5 @@ public record CustomerSessionIntrospectResponse
     /// <summary>
     /// The customer information.
     /// </summary>
-    public Models.Customers.Customer? Customer { get; init; }
+    public Customers.Customer? Customer { get; init; }
 }

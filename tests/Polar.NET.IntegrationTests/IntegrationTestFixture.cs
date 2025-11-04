@@ -36,7 +36,7 @@ public class IntegrationTestFixture
 
         return PolarClient.Create()
             .WithToken(accessToken)
-            .WithEnvironment(Polar.NET.Models.Common.PolarEnvironment.Sandbox)
+            .WithEnvironment(Models.Common.PolarEnvironment.Sandbox)
             .WithTimeout(30)
             .WithMaxRetries(3)
             .WithRequestsPerMinute(600) // More lenient rate limiting for tests
@@ -52,7 +52,7 @@ public class IntegrationTestFixture
     {
         return PolarClient.Create()
             .WithToken(accessToken)
-            .WithEnvironment(Polar.NET.Models.Common.PolarEnvironment.Sandbox)
+            .WithEnvironment(Models.Common.PolarEnvironment.Sandbox)
             .WithTimeout(30)
             .WithMaxRetries(3)
             .WithRequestsPerMinute(600) // More lenient rate limiting for tests

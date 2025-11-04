@@ -263,19 +263,19 @@ public record BenefitGrant
     /// The customer information.
     /// </summary>
     [JsonPropertyName("customer")]
-    public Models.Customers.Customer? Customer { get; init; }
+    public Customers.Customer? Customer { get; init; }
 
     /// <summary>
     /// The order information.
     /// </summary>
     [JsonPropertyName("order")]
-    public Models.Orders.Order? Order { get; init; }
+    public Orders.Order? Order { get; init; }
 
     /// <summary>
     /// The subscription information.
     /// </summary>
     [JsonPropertyName("subscription")]
-    public Models.Subscriptions.Subscription? Subscription { get; init; }
+    public Subscriptions.Subscription? Subscription { get; init; }
 }
 
 /// <summary>
