@@ -226,7 +226,7 @@ public class EventsIntegrationTests : IClassFixture<IntegrationTestFixture>
         // Assert
         allEvents.Should().NotBeEmpty();
         var testEvents = allEvents.Where(e => e.Name.StartsWith(testEventNamePrefix)).ToList();
-        testEvents.Should().HaveCountGreaterOrEqualTo(0); // May be 0 due to processing delays
+        testEvents.Should().HaveCountGreaterThanOrEqualTo(0); // May be 0 due to processing delays
     }
 
     [Fact]

@@ -464,7 +464,7 @@ public class BenefitsIntegrationTests : IClassFixture<IntegrationTestFixture>
 
         // Assert
         firstPage.Should().NotBeNull();
-        firstPage.Items.Count.Should().BeLessOrEqualTo(5);
+        firstPage.Items.Count.Should().BeLessThanOrEqualTo(5);
         firstPage.Pagination.Page.Should().Be(1);
         
         if (firstPage.Pagination.MaxPage > 1)
