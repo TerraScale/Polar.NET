@@ -395,7 +395,7 @@ public class OrdersIntegrationTests : IClassFixture<IntegrationTestFixture>
             // Verify all returned orders have the requested status (if any orders exist)
             foreach (var order in result.Items)
             {
-                order.Status.ToString().ToLowerInvariant().Should().Be(status);
+                order.Status.Should().Be(status);
             }
         }
         catch (Polar.NET.Exceptions.PolarApiException ex) when (ex.Message.Contains("Unauthorized") || ex.Message.Contains("Forbidden"))
